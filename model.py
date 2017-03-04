@@ -1,7 +1,6 @@
 """Models and database functions for Poetry project"""
 
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.dialects.postgresql import TSVECTOR
 
 db = SQLAlchemy()
 
