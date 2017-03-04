@@ -37,8 +37,6 @@ class Organization(db.Model):
     name = db.Column(db.String(700), nullable=False)
     location = db.Column(db.String(700), nullable=False)
 
-    subjects = db.relationship('Organization', backref='individuals')
-
     def __repr__(self):
         """repr for a more readable organization object"""
         return "{}".format(self.name.encode('unicode-escape'))
