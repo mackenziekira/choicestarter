@@ -7,7 +7,6 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
-
 ############################################################################
 # Model definitions
 
@@ -19,12 +18,14 @@ class User(db.Model):
     password = db.Column('password' , db.String(250))
     email = db.Column('email', db.String(50), unique=True , index=True)
     registered_on = db.Column('registered_on', db.DateTime)
+    role = db.Column('role' , db.String(250))
 
     def __init__(self, username, password, email):
         self.username = username
         self.set_password(password)
         self.email = email
         self.registered_on = datetime.utcnow()
+        self.role = role
 
     def set_password(self , password):
         self.password = generate_password_hash(password)
