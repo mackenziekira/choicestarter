@@ -16,19 +16,32 @@ class Individual(db.Model):
 
 
     individual_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    title = db.Column(db.String(200), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('authors.author_id'))
-    poem_url = db.Column(db.String(300), nullable=False)
-    body = db.Column(db.Text, nullable=False)
-    tsv = db.Column(TSVECTOR)
+    org_id = db.Column(db.Integer, db.ForeignKey('organizations.org_id'))
+    name = db.Column(db.String(500), nullable=False)
+    age = db.Column(db.Integer)
+    date_of_procedure = db.Column(db.Date)
 
-
-    author = db.relationship('Author', backref='poems')
-    subjects = db.relationship('Subject', secondary='poems_subjects', backref='poems')
+    subjects = db.relationship('Organization', backref='individuals')
 
     def __repr__(self):
-        """repr for a more readable poem object"""
-        return "{}".format(self.title.encode('unicode-escape'))
+        """repr for a more readable individual object"""
+        return "{}".format(self.name.encode('unicode-escape'))
+
+class Organization(db.Model):
+    """class for individual objects"""
+
+    __tablename__ = 'organizations'
+
+
+    org_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    name = db.Column(db.String(700), nullable=False)
+    location = db.Column(db.String(700), nullable=False)
+
+    subjects = db.relationship('Organization', backref='individuals')
+
+    def __repr__(self):
+        """repr for a more readable organization object"""
+        return "{}".format(self.name.encode('unicode-escape'))
 
 #############################################################################
 
