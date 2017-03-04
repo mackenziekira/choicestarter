@@ -1,10 +1,9 @@
 from jinja2 import StrictUndefined
-from flask import Flask, jsonify, render_template, redirect, request, flash, session
+from flask import Flask, jsonify, render_template, redirect, request, flash, session, connect_to_db
 from flask_debugtoolbar import DebugToolbarExtension
+from model import db, connect_to_db
+import os
 
-
-
-cache = SimpleCache()
 app = Flask(__name__)
 
 # Raises an error if you use undefined Jinja variable.
