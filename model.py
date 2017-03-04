@@ -20,6 +20,7 @@ class Individual(db.Model):
     name = db.Column(db.String(500), nullable=False)
     age = db.Column(db.Integer)
     date_of_procedure = db.Column(db.Date)
+    conception_date = db.Column(db.Date)
 
     subjects = db.relationship('Organization', backref='individuals')
 
