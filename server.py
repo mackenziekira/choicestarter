@@ -1,6 +1,7 @@
 from jinja2 import StrictUndefined
 from flask import Flask, jsonify, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
+from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from model import db, connect_to_db
 import os
 
@@ -9,6 +10,9 @@ app = Flask(__name__)
 # Raises an error if you use undefined Jinja variable.
 app.jinja_env.undefined = StrictUndefined
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
 
 @app.route('/')
