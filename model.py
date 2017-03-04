@@ -30,7 +30,16 @@ class Individual(db.Model):
         """repr for a more readable poem object"""
         return "{}".format(self.title.encode('unicode-escape'))
 
+#############################################################################
 
+# Helper functions
+
+def connect_to_db(app, db_uri=None):
+    """Connect the database to Flask application"""
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or "postgresql:///choicestarter"
+    db.app = app
+    db.init_app(app)
 
 if __name__ == "__main__":
     from server import app
