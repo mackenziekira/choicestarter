@@ -1,6 +1,8 @@
 """Models and database functions for Poetry project"""
 
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -9,23 +11,43 @@ db = SQLAlchemy()
 ############################################################################
 # Model definitions
 
-class Individual(db.Model):
-    """class for individual objects"""
+class User(db.Model):
+    __tablename__ = 'users'
 
-    __tablename__ = 'individuals'
+    id = db.Column('user_id', db.Integer , primary_key=True)
+    username = db.Column('username', db.String(20), unique=True, index=True)
+    password = db.Column('password' , db.String(250))
+    email = db.Column('email', db.String(50), unique=True , index=True)
+    registered_on = db.Column('registered_on', db.DateTime)
 
+    def __init__(self, username, password, email):
+        self.username = username
+        self.set_password(password)
+        self.email = email
+        self.registered_on = datetime.utcnow()
 
-    individual_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    org_id = db.Column(db.Integer, db.ForeignKey('organizations.org_id'))
-    name = db.Column(db.String(500), nullable=False)
-    age = db.Column(db.Integer)
-    date_of_procedure = db.Column(db.Date)
+    def set_password(self , password):
+        self.password = generate_password_hash(password)
 
-    subjects = db.relationship('Organization', backref='individuals')
+    def check_password(self , password):
+        return check_password_hash(self.password , password)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return unicode(self.id)
 
     def __repr__(self):
-        """repr for a more readable individual object"""
-        return "{}".format(self.name.encode('unicode-escape'))
+        return '<User %r>' % (self.username)
+
+
 
 class Organization(db.Model):
     """class for individual objects"""
