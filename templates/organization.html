@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Choice Starter{% endblock %}
+{% block title %}Choice Starter - {{ organization.name }}{% endblock %}
 {% block content %}
 
 <div class="container page-organizations col-xs-12">
 
 	<header class="section section-hero">
-		<div class="image-hero"></div>
-		<h1 class="organization-name">The Lillith Fund</h1>
- 		<h2 class="hero-headline text-center col-md-10">The Lillith Fund helps people pay for an abortion when they can’t afford it.</h2>
+		<div class="image-hero" style="background-image:url('{{ url_for('organization_template_hero_image', org_id=organization.org_id) }}')"></div>
+		<h1 class="organization-name">{{ organization.name }}</h1>
+ 		<h2 class="hero-headline text-center col-md-10">{{ organization.description }}</h2>
  		<div class="col-xs-12 text-center">
  			<a href="donate" class="btn btn-hero">Give Now</a>
  		</div>
@@ -65,9 +65,9 @@
   			<div class="col-md-10 col-md-offset-1">
   				<h2 class="section-headline text-center">Contact Us</h2>
   				<p class="address text-center">
-  					<span class="address-line-1">P.O. Box 759</span><br>
-  					<span class="address-line-2">Anytown, USA</span><br>
-  					<span class="address-line-3">93856</span>
+  					<span>{{ organization.address }}</span><br>
+  					<span>{{ organization.email }}</span><br>
+  					<span>{{ organization.location }}</span>
   				</p>
   			</div>
   		</div>
@@ -81,5 +81,3 @@
 {% block script %}
 
 {% endblock %}
-
-<!-- If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. -->

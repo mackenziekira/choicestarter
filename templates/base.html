@@ -30,7 +30,6 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="{{ url_for('organizations') }}">Organizations</a></li>
           <li><a href="{{ url_for('donate') }}">Donate</a></li>
           <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
@@ -46,7 +45,7 @@
           </li>
         {% else %}
           <li><a href="{{ url_for('login_get') }}">Login</a></li>
-          <li><a href="{{ url_for('register') }}">Regiser</a></li>
+          <li><a href="{{ url_for('register') }}">Register</a></li>
         {% endif %}
         </ul>
       </div><!-- /.navbar-collapse -->

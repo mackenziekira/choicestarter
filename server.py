@@ -1,5 +1,5 @@
 from jinja2 import StrictUndefined
-from flask import Flask, jsonify, render_template, redirect, request, flash, session, g, url_for, flash
+from flask import Flask, jsonify, render_template, redirect, request, flash, session, g, url_for, flash, make_response
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 # from model import db, connect_to_db
@@ -31,9 +31,18 @@ def about():
     return render_template("about.html")
 
 
-@app.route('/organizations')
-def organizations():
-    return render_template("organizations.html")
+@app.route('/organizations/<org_id>')
+def organization(org_id):
+    organization = Organization.query.filter(Organization.org_id == org_id).first()
+    return render_template('organization.html', organization=organization)
+
+
+@app.route('/organizations/<org_id>/hero_image')
+def organization_template_hero_image(org_id):
+    organization = Organization.query.filter(Organization.org_id == org_id).first()
+    response = make_response(organization.template_hero_image)
+    response.headers['Content-Type'] = 'image/jpeg'
+    return response
 
 
 @app.route('/donate')
