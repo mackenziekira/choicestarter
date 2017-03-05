@@ -8,7 +8,8 @@
             {% if no_payment_saved is sameas true %}
 
     <label for="card-element">
-      Credit or debit card
+      <h2>Thank you so much for your donation to our effort.</h2>
+      <div>Enter your credit or debit card information for payment.</div>
     </label>
     <div id="card-element">
       <!-- a Stripe Element will be inserted here. -->
@@ -23,7 +24,9 @@
     <div id="card-errors"></div>
   </div>
 
-  <button>Submit Payment</button>
+  <div class="controls">
+ 	<button class="btn">Submit Payment</button>
+  </div>
 </form>
 
 </div>
