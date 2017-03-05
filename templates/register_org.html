@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="form-page">
+
+  <form id="register-org" action="" method=post class="form-horizontal">
+    {% if message %}
+      <h3>{{ message }}</h3>
+    {% else %}
+      <h2>Register an Organization</h2>
+    {% endif %}
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge"
+            placeholder="Username" required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="password" id="password" name="password" class="input-xlarge"
+            placeholder="Password" required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="email" id="email" name="email" class="input-xlarge"
+            placeholder="Email">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="phone" id="phone" name="phone" class="input-xlarge"
+            placeholder="Phone">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="location" id="location" name="location" class="input-xlarge"
+            placeholder="Location">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="description" id="description" name="description" class="input-xlarge"
+            placeholder="Description">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

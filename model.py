@@ -14,11 +14,11 @@ class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column('user_id', db.Integer , primary_key=True)
-    username = db.Column('username', db.String(30), unique=True, index=True)
-    password = db.Column('password' , db.String(250))
-    email = db.Column('email', db.String(50), unique=True, index=True)
+    username = db.Column('username', db.Text(), unique=True, index=True)
+    password = db.Column('password' , db.Text())
+    email = db.Column('email', db.Text())
     registered_on = db.Column('registered_on', db.DateTime)
-    role = db.Column('role' , db.String(30))
+    role = db.Column('role' , db.Text())
     stripe_id = db.Column('stripe_id', db.Text(), index=True)
 
     def __init__(self, username, password, email, role):
@@ -50,12 +50,26 @@ class User(db.Model):
         return '<User %r>' % (self.username)
 
 
+class UserRoles(db.Model):
+    __tablename__ = 'userroles'
+
+    userrole_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, primary_key=True)
+    role_id = db.Column(db.Integer, primary_key=True)
+
+    __table_args__ = (db.ForeignKeyConstraint(['user_id', 'role_id'], ['users.id', 'roles.role_id']), {})
+
+
+class Roles(db.Model):
+    __tablename__ = 'roles'
+
+    role_id = db.Column('role_id', db.Integer , primary_key=True)
+
 
 class Organization(db.Model):
     """class for individual objects"""
 
     __tablename__ = 'organizations'
-
 
     org_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(700), nullable=False)
