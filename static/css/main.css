@@ -1,0 +1,16 @@
+/*
+* Shared CSS throughout the site
+*/
+* {
+	font-family: Helvetica, Arial, sans-serif;
+}
+h1,
+h2,
+h3 {
+	font-family: 'Playfair Display', serif;
+}
+.navbar-default {
+	background: beige;
+	border: none;
+	/*background: url(/static/images/choice-starter-logo.png);*/
+}

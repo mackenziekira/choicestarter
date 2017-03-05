@@ -7,6 +7,8 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/sections.css">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 <!--   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 </head>
 
@@ -22,7 +24,8 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ url_for('index') }}">Choice Starter</a>
+        <img src="/static/images/choice-starter-logo.png" height="50" />
+        <a class="navbar-brand" href="{{ url_for('index') }}">choiceStarter</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,7 +49,7 @@
   </nav>
 
   <!-- Flash messages -->
-  
+
   {% with messages = get_flashed_messages() %}
   {% if messages %}
   <div>
