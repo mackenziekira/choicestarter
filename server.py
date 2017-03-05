@@ -6,9 +6,11 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 from model import *
 import os
 from payments import create_charge, create_transfer
+import config
 
 application = Flask(__name__)
 app = application
+app.config.from_object(config)
 
 # Raises an error if you use undefined Jinja variable.
 app.jinja_env.undefined = StrictUndefined
