@@ -14,13 +14,14 @@ class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column('user_id', db.Integer , primary_key=True)
-    username = db.Column('username', db.String(20), unique=True, index=True)
+    username = db.Column('username', db.String(30), unique=True, index=True)
     password = db.Column('password' , db.String(250))
-    email = db.Column('email', db.String(50), unique=True , index=True)
+    email = db.Column('email', db.String(50), unique=True, index=True)
     registered_on = db.Column('registered_on', db.DateTime)
-    role = db.Column('role' , db.String(250))
+    role = db.Column('role' , db.String(30))
+    stripe_id = db.Column('stripe_id', db.Text(), index=True)
 
-    def __init__(self, username, password, email):
+    def __init__(self, username, password, email, role):
         self.username = username
         self.set_password(password)
         self.email = email

@@ -14,3 +14,7 @@ h3 {
 	border: none;
 	/*background: url(/static/images/choice-starter-logo.png);*/
 }
+
+#form-page {
+	text-align: center;
+}
