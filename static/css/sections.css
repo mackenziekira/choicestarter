@@ -26,6 +26,9 @@
 		font-size: 50px;
 		margin-top: -280px;
 		margin-bottom: 200px;
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.section-hero .btn {
 		margin-top: -300px;
@@ -102,26 +105,26 @@
 	padding-bottom: 66.67%; /*1280/1920*/
 }
 
-/*Section testimonials*/
-.section-testimonials {
+/*Section orgs*/
+.section-orgs {
 	color: #A7A7A7;
 }
-.section-testimonials a {
+.section-orgs a {
 	color: purple;
 }
-.section-testimonials a:hover {
+.section-orgs a:hover {
 	color: purple;
 	opacity: 0.8;
 	text-decoration: none;
 }
-.section-testimonials .section-headline {
+.section-orgs .section-headline {
 	color: purple;
 	margin-bottom: 40px;
 }
-.section-testimonials .shadow-container {
+.section-orgs .shadow-container {
 	margin-top: 50px;
 }
-.section-testimonials .description-testimonials {
+.section-orgs .description-orgs {
 	border-radius: 50%;
 	float: none;
 	height: 250px;
@@ -129,9 +132,9 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.section-testimonials .feature-photo-1,
-.section-testimonials .feature-photo-4,
-.section-testimonials .feature-photo-3 {
+.section-orgs .feature-photo-1,
+.section-orgs .feature-photo-4,
+.section-orgs .feature-photo-3 {
 	background-size: cover;
 	padding: 0;
 }
@@ -160,4 +163,21 @@
 }
 .progress-bar-3 {
 	width: 83%;
+}
+
+/*Organizations Page
+*/
+.organization-name {
+	font-size: 20px;
+	text-transform: uppercase;
+	position: absolute;
+    top: 10px;
+    color: white;
+    margin-left: 20px;
+}
+.page-organizations .section-intro {
+	min-height: initial;
+}
+.page-organizations .testimonials-headline {
+	color: purple;
 }
