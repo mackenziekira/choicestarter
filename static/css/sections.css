@@ -38,12 +38,8 @@
 		font-size: 20px;
 	}
 /*}*/
-@media (min-width: 992px) {
-	.hero-headline {
-		font-size: 50px;
-	}
-}
 .logo-graphic {
+	display: none; /*dont show for small*/
 	width: 350px;
     margin-left: 39%;
     margin-top: 333px;
@@ -51,6 +47,14 @@
 .logo-graphic path {
 	stroke: #733773; /*purple*/
 	opacity: 0.5;
+}
+@media (min-width: 992px) {
+	.hero-headline {
+		font-size: 50px;
+	}
+	.logo-graphic {
+		display: block; /* show for large*/
+	}
 }
 
 .section {
