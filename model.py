@@ -59,7 +59,9 @@ class Organization(db.Model):
     location = db.Column(db.Text(), nullable=False)
     email = db.Column(db.Text())
     phone = db.Column(db.Text())
-    approved = db.Column(db.Boolean)
+    address = db.Column(db.Text())
+    approved = db.Column(db.Boolean, nullable=False)
+    template_hero_image = db.Column(db.LargeBinary)
 
     def __init__(self, name, description, location, email, phone):
         self.name = name
