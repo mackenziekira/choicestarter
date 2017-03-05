@@ -9,6 +9,9 @@ h2,
 h3 {
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
+.section-headline {
+	text-transform: uppercase;
+}
 
 /*Navbar*/
 .navbar-default {
@@ -34,7 +37,16 @@ h3 {
 
 /*Colors*/
 /*
-#733773
+
+#FFC964 lightpeach
+#F1B23B peach
+#E98300 orange
+#733773 purple
+#3E1D3E darkpurple
+
+#BBBBBB lightgray
+#A7A7A7 gray
+
 */
 #form-page {
 	text-align: center;
