@@ -7,7 +7,8 @@ from model import *
 import os
 from payments import create_charge, create_transfer
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 
 # Raises an error if you use undefined Jinja variable.
 app.jinja_env.undefined = StrictUndefined
@@ -15,6 +16,11 @@ app.jinja_env.undefined = StrictUndefined
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://' \
++ os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] +'@' + os.environ['RDS_HOSTNAME'] + \
+':' + os.environ['RDS_PORT'] + '/' + os.environ['RDS_DB_NAME']
 
 
 @app.route('/')
