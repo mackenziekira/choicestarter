@@ -70,24 +70,3 @@ if __name__ == "__main__":
 
     # create all tables
     db.create_all()
-
-    load_regions()
-    load_affiliations()
-
-    # Import data into database
-
-    raw_poems = os.listdir('raw_poems/')
-
-
-    for f in raw_poems:
-        text = open('raw_poems/' + f)
-
-        soup = BeautifulSoup(text, 'html.parser')
-
-        
-        author = load_author(soup)
-        poem = load_poem(soup, author)
-        subjects = load_subjects(soup, poem)
-        db.session.commit()
-
-        text.close()
