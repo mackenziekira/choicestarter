@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="form-page">
+
+  <form id="register-donor" action="" method=post class="form-horizontal">
+    {% if message %}
+      <h3>{{ message }}</h3>
+    {% else %}
+      <h2>Become a Donor</h2>
+    {% endif %}
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="username" name="username" class="input-xlarge"
+            placeholder="Username" required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="password" id="password" name="password" class="input-xlarge"
+            placeholder="Password" required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="email" id="email" name="email" class="input-xlarge"
+            placeholder="Email">
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}
