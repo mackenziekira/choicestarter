@@ -2,7 +2,7 @@
 {% block title %}Choice Starter{% endblock %}
 {% block content %}
 
-<div class="container col-xs-12">
+<div class="container page-landing col-xs-12">
 
 	<header class="section-hero">
 		<div class="image-hero"></div>
@@ -58,6 +58,7 @@
 			 		<div class="layout-half col-xs-12 col-md-7">
 			 			<div class="feature-photo feature-photo-2"></div>
 			 		</div>
+                </div>
 	 		</div>
 	 	</div>
  	</section>
@@ -97,42 +98,20 @@
  	<section class="section section-orgs text-center">
  		<div class="col-md-10 col-md-offset-1">
  			<h2 class="section-headline text-center">Featured Organizations</h2>
+            {% for featured_organization in featured_3_organizations %}
 	 		<div class="col-xs-12 col-md-4">
-	 			<a href="{{ url_for('organization', org_id=1) }}">
-	 				<div class="description-orgs feature-photo-1 col-xs-12"></div>
+	 			<a href="{{ url_for('organization', org_id=featured_organization.org_id) }}">
+    	 			<div class="description-orgs feature-photo-item col-xs-12" style="background-image: url('{{ url_for('organization_template_hero_image', org_id=featured_organization.org_id) }}')"></div>
 	 			</a>
 	 			<div class="progress-bar-container">
 	 				<div class="progress-bar progress-bar-1">
 	 					<p>$300 to go</p>
 	 				</div>
 	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=1) }}">The Lillith Fund</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+	 			<h4><a href="{{ url_for('organization', org_id=featured_organization.org_id) }}">{{ featured_organization.name }}</a></h4>
+	 			<p>{{ featured_organization.description }}</p>
 	 		</div>
-	 		<div class="col-xs-12 col-md-4">
-	 			<a href="{{ url_for('organization', org_id=2) }}">
-	 				<div class="description-orgs feature-photo-4 col-xs-12"></div>
-	 			</a>
-	 			<div class="progress-bar-container">
-	 				<div class="progress-bar progress-bar-2">
-	 					<p>$600 to go</p>
-	 				</div>
-	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=2) }}">Fund #2</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-	 		</div>
-	 		<div class="col-xs-12 col-md-4">
-	 			<a href="{{ url_for('organization', org_id=3) }}">
-	 				<div class="description-orgs feature-photo-3 col-xs-12"></div>
-	 			</a>
-	 			<div class="progress-bar-container">
-	 				<div class="progress-bar progress-bar-3">
-	 					<p>$120 to go</p>
-	 				</div>
-	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=3) }}">Fund #3</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-	 		</div>
+            {% endfor %}
 	 	</div>
  	</section>
 

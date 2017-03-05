@@ -7,7 +7,8 @@ from model import *
 import os
 from payments import create_charge, create_transfer, create_user, charge_customer
 
-app = Flask(__name__)
+application = Flask(__name__)
+app = application
 
 # Raises an error if you use undefined Jinja variable.
 app.jinja_env.undefined = StrictUndefined
@@ -17,14 +18,19 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://' \
++ os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] +'@' + os.environ['RDS_HOSTNAME'] + \
+':' + os.environ['RDS_PORT'] + '/' + os.environ['RDS_DB_NAME']
+
+
 @app.route('/')
 def index():
     """Homepage."""
     # If logged in
     # find all roles
     # pass all roles and data to landing page
-
-    return render_template("landingpage.html")
+    featured_3_organizations = Organization.query.filter(Organization.template_featured <= 3)
+    return render_template("landingpage.html", featured_3_organizations=featured_3_organizations)
 
 
 @app.route('/about')
@@ -98,7 +104,7 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index')) 
+    return redirect(url_for('index'))
 
 
 @app.route('/register')
@@ -133,7 +139,7 @@ def register_org_get():
     if g.user.is_authenticated:
         return render_template('register_org.html', message=None)
     else:
-        flash("Sorry, you need to login first as a user.")
+        flash("Register your organization.")
         return redirect(url_for('login_get'))
 
 
