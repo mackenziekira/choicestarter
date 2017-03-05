@@ -54,7 +54,7 @@ def forgot_password():
 
 @app.route('/login', methods=['GET'])
 def login_get():
-    return render_template('login.html')
+    return render_template('login.html', message=None)
 
 
 @app.route('/login', methods=['POST'])
@@ -98,23 +98,37 @@ def register_donor():
     db.session.add(user)
     db.session.commit()
     login_user(user, remember=False)
+    # Add donor role
+    role = 'donor'
+    userrole = UserRole(None, g.user.id, role)
+    db.session.add(userrole)
+    db.session.commit()
     return redirect(url_for('index'))
 
 
-@app.route('/register_org' , methods=['GET','POST'])
-def register_org():
-    if request.method == 'GET':
+@app.route('/register_org' , methods=['GET'])
+def register_org_get():
+    if g.user.is_authenticated:
         return render_template('register_org.html', message=None)
-    # Post request
-    existing_user = User.query.filter(User.username == request.form['username']).first()
-    if existing_user:
-        msg = "Sorry, that username is already taken."
+    else:
+        msg = "Sorry, you need to login first as a user."
+        return render_template('login.html', message=msg)
+
+
+@app.route('/register_org' , methods=['POST'])
+def register_org_post():
+    existing_org = Organization.query.filter(Organization.name == request.form['name']).first()
+    if existing_org:
+        msg = "Sorry, that organization name is already taken."
         return render_template('register_org.html', message=msg)
-    role = 'org'
-    user = User(request.form['username'], request.form['password'], request.form['email'], role)
-    db.session.add(user)
+    # Create organization
+    org = Organization(request.form['name'], request.form['description'], request.form['location'])
+    db.session.add(org)
+    # Add org-admin user-role
+    role = 'admin'
+    userrole = UserRole(org.org_id, g.user.id, role)
+    db.session.add(userrole)
     db.session.commit()
-    login_user(user, remember=False)
     return redirect(url_for('index'))
 
 
