@@ -18,11 +18,11 @@ var Main = {
 		};
 
 		// Options
-		var options = this.overrideOptions({type: 'oneByOne', start: 'inViewport'});
+		var options = this.overrideOptions({type: 'async', start: 'inViewport', duration: '100', 'delay': '0'});
 
 		// Create Animations
-		this.logoGraphic = this.createAnimation('logo-graphic', this.defaults, 'text-logo');
-		// this.codeGraphic = this.createAnimation('code-graphic', options, 'text-code');
+		this.logoGraphic = this.createAnimation('logo-graphic', options, 'text-logo');
+		// this.codeGraphic = this.createAnimation('code-graphic', this.defaults, 'text-code');
 		// this.chaiGraphic = this.createAnimation('chai-graphic', options, 'text-chai');
 	},
 
