@@ -150,7 +150,7 @@ footer li a:hover {
 #form-page {
 	background: #EDECEE;
 	text-align: center;
-	max-width: 500px;
+	max-width: 320px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 50px;
@@ -176,4 +176,9 @@ footer li a:hover {
 }
 #form-page .section {
 	min-height: 400px;
+}
+@media (min-width: 992px) {
+	#form-page {
+		max-width: 500px;
+	}
 }
