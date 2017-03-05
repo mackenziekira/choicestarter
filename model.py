@@ -112,7 +112,6 @@ class UserRole(db.Model):
 def connect_to_db(app):
     """Connect the database to Flask application"""
 
-    # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or "postgresql:///choicestarter"
     db.init_app(app)
     db.app = app
 
