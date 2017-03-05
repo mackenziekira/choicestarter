@@ -15,4 +15,3 @@ pyparsing==2.1.10
 six==1.10.0
 Werkzeug==0.11.15
 stripe==1.48.1
-psycopg2==2.7
