@@ -64,7 +64,7 @@
 	height: auto;
 }
 .description-about {
-	padding: 20px;
+	padding: 20px 30px 28px;
 }
 
 /*Section About*/
@@ -82,6 +82,7 @@
 }
 .container-how .shadow-container {
 	margin-top: 80px;
+	margin-bottom: 40px;
 	min-height: 300px;
 	overflow: hidden;
 }
@@ -90,9 +91,6 @@
 }
 .container-what .description-about {
 	/*border-top: 10px solid #fff;*/
-}
-.container-how .description-about {
-	padding-top: 60px;
 }
 .layout-half {
 	padding: 0;
@@ -105,7 +103,19 @@
 	color: #F1B23B; /*orange*/
 }
 .layout-half:last-child {
+	max-height: 300px;
 	/*border-left: 10px solid #fff;*/
+}
+@media (min-width: 992px) {
+	.container-how .shadow-container {
+		margin-bottom: 0;
+	}
+	.container-how .description-about {
+		padding-top: 60px;
+	}
+	.layout-half:last-child {
+		max-height: none;
+	}
 }
 .section-about .description-about {
 	background: #F1B23B; /*orange*/
@@ -142,6 +152,8 @@
 /*Section orgs*/
 .section-orgs {
 	color: #A7A7A7;
+	position: relative;
+	z-index: 10;
 }
 .section-orgs a {
 	color: #733773; /*purple*/
@@ -200,6 +212,10 @@
 
 /*Section Journey
 */
+.section-journey {
+	position: relative;
+	z-index: 1;
+}
 .journey-headline {
 	color: #733773; /*purple*/
 	margin-top: 100px;
