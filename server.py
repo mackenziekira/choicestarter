@@ -19,6 +19,9 @@ login_manager.login_view = 'login'
 @app.route('/')
 def index():
     """Homepage."""
+    # If logged in
+    # find all roles
+    # pass all roles and data to landing page
 
     return render_template("landingpage.html")
 
@@ -49,20 +52,24 @@ def forgot_password():
     return render_template("forgot_password.html")
 
 
-@app.route('/login', methods=['GET','POST'])
-def login():
-    if request.method == 'GET':
-        return render_template('login.html')
-    # POST request, trying to login
+@app.route('/login', methods=['GET'])
+def login_get():
+    return render_template('login.html')
+
+
+@app.route('/login', methods=['POST'])
+def login_post():
     username = request.form['username']
     password = request.form['password']
     registered_user = User.query.filter(User.username == username).first()
     if registered_user is None:
-        return redirect(url_for('login'))
+        return redirect(url_for('login_get'))
     if not registered_user.check_password(password):
-        return redirect(url_for('login'))
+        return redirect(url_for('login_get'))
     login_user(registered_user, remember=False)
-    return redirect(request.args.get('next') or url_for('index'))
+    # Find their role(s)
+    role = registered_user.role
+    return redirect(url_for('index'))
 
 
 @app.route('/logout')
@@ -72,16 +79,38 @@ def logout():
     return redirect(url_for('index')) 
 
 
-@app.route('/register' , methods=['GET','POST'])
+@app.route('/register')
 def register():
+    return render_template("register.html")
+
+
+@app.route('/register_donor' , methods=['GET','POST'])
+def register_donor():
     if request.method == 'GET':
-        return render_template('register.html', message=None)
+        return render_template('register_donor.html', message=None)
     # Post request
     existing_user = User.query.filter(User.username == request.form['username']).first()
     if existing_user:
         msg = "Sorry, that username is already taken."
-        return render_template('register.html', message=msg)
+        return render_template('register_donor.html', message=msg)
     role = 'donor'
+    user = User(request.form['username'], request.form['password'], request.form['email'], role)
+    db.session.add(user)
+    db.session.commit()
+    login_user(user, remember=False)
+    return redirect(url_for('index'))
+
+
+@app.route('/register_org' , methods=['GET','POST'])
+def register_org():
+    if request.method == 'GET':
+        return render_template('register_org.html', message=None)
+    # Post request
+    existing_user = User.query.filter(User.username == request.form['username']).first()
+    if existing_user:
+        msg = "Sorry, that username is already taken."
+        return render_template('register_org.html', message=msg)
+    role = 'org'
     user = User(request.form['username'], request.form['password'], request.form['email'], role)
     db.session.add(user)
     db.session.commit()
