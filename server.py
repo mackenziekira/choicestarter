@@ -31,6 +31,16 @@ def about():
     return render_template("about.html")
 
 
+@app.route('/manage_orgs')
+def manage_orgs():
+    return render_template("manage_orgs.html")
+
+
+@app.route('/my_donations')
+def my_donations():
+    return render_template("my_donations.html")
+
+
 @app.route('/organizations')
 def organizations():
     return render_template("organizations.html")
@@ -67,8 +77,6 @@ def login_post():
     if not registered_user.check_password(password):
         return redirect(url_for('login_get'))
     login_user(registered_user, remember=False)
-    # Find their role(s)
-    role = registered_user.role
     return redirect(url_for('index'))
 
 
@@ -94,7 +102,7 @@ def register_donor():
         msg = "Sorry, that username is already taken."
         return render_template('register_donor.html', message=msg)
     role = 'donor'
-    user = User(request.form['username'], request.form['password'], request.form['email'], role)
+    user = User(request.form['username'], request.form['password'], request.form['email'])
     db.session.add(user)
     db.session.commit()
     login_user(user, remember=False)
