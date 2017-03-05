@@ -5,6 +5,7 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 # from model import db, connect_to_db
 from model import *
 import os
+from payments import create_charge, create_transfer
 
 app = Flask(__name__)
 
@@ -22,8 +23,8 @@ def index():
     # If logged in
     # find all roles
     # pass all roles and data to landing page
-
-    return render_template("landingpage.html")
+    featured_3_organizations = Organization.query.filter(Organization.template_featured <= 3)
+    return render_template("landingpage.html", featured_3_organizations=featured_3_organizations)
 
 
 @app.route('/about')
@@ -153,6 +154,15 @@ def register_org_post():
     db.session.add(userrole)
     db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/charge', methods=['POST'])
+def charge():
+    print(request)
+    print(request.form)
+    token = request.form['stripeToken']
+    amount = request.form['amount']
+    charged = create_charge(amount, token)
+    return '<h1>'+charged.outcome.type+'</h1>'
 
 
 @login_manager.user_loader

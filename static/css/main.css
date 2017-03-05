@@ -4,6 +4,9 @@
 * {
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
+.row {
+	margin: 0;
+}
 h1,
 h2,
 h3 {
@@ -15,8 +18,54 @@ h3 {
 
 /*Navbar*/
 .navbar-default {
-	background: beige;
+	background: #fff;
 	border: none;
+	color: #A7A7A7; /*gray*/
+	margin-bottom: 0;
+}
+.navbar-default .navbar-nav a.btn-nav {
+	background: #733773; /*purple*/
+	color: #fff;
+	margin-right: -15px;
+}
+.navbar-default .navbar-nav a.btn-nav:hover {
+	color: #733773; /*purple*/
+	opacity: 0.9;
+}
+.navbar-default .navbar-brand {
+	color: #4A4A4A; /*darkgray*/
+	font-weight: bold;
+}
+
+/*Footer*/
+footer {
+	background: #733773; /*purple*/
+	min-height: 410px;
+	color: #fff;
+	margin-top: 80px;
+	padding: 40px;
+}
+footer .btn-footer {
+    background: #c35cc3; /*lightpurple*/
+	margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+}
+footer .btn-footer:hover {
+	background: #fff;
+	color: #733773; /*purple*/
+	opacity: 0.9;
+}
+footer li {
+	list-style: none;
+}
+footer li a {
+	color: #fff;
+}
+footer li a:hover {
+	color: #fff;
+	opacity: .8;
+	text-decoration: none;
 }
 
 /*Buttons*/
@@ -24,30 +73,34 @@ h3 {
 	text-transform: uppercase;
 	font-weight: bolder;
 	letter-spacing: 1.5px;
-    background: purple;
-    color: #fff;
+    background: #fff;
+    color: #733773; /*purple*/
     border-radius: 0;
-    box-shadow: 0px 0px 4px 2px rgba(255,255,255,0.2);
+    box-shadow: 0px 0px 4px 2px rgba(100,100,100,0.2);
 }
 .btn:hover {
 	color: #fff;
-	background: purple;
+	background: #733773; /*purple*/
 	opacity: 0.9;
 }
 
 /*Colors*/
 /*
-
-#FFC964 lightpeach
-#F1B23B peach
-#E98300 orange
-#733773 purple
-#3E1D3E darkpurple
-
-#BBBBBB lightgray
-#A7A7A7 gray
-
+*
+* #FFC964 lightpeach
+* #F1B23B peach
+* #E98300 orange
+*
+* #C35CC3 lightpurple
+* #733773 purple
+* #3E1D3E darkpurple
+*
+* #BBBBBB lightgray
+* #A7A7A7 gray
+* #4A4A4A darkgray
+*
 */
+
 #form-page {
 	text-align: center;
 }
