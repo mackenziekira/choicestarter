@@ -1,5 +1,5 @@
 from jinja2 import StrictUndefined
-from flask import Flask, jsonify, render_template, redirect, request, flash, session, g, url_for
+from flask import Flask, jsonify, render_template, redirect, request, flash, session, g, url_for, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 # from model import db, connect_to_db
@@ -111,8 +111,8 @@ def register_org_get():
     if g.user.is_authenticated:
         return render_template('register_org.html', message=None)
     else:
-        msg = "Sorry, you need to login first as a user."
-        return render_template('login.html', message=msg)
+        flash("Sorry, you need to login first as a user.")
+        return redirect(url_for('login_get'))
 
 
 @app.route('/register_org' , methods=['POST'])
