@@ -5,7 +5,7 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 # from model import db, connect_to_db
 from model import *
 import os
-from payments import create_charge, create_transfer
+from payments import create_charge, create_transfer, create_user, charge_customer
 
 app = Flask(__name__)
 
@@ -62,7 +62,7 @@ def organization_template_hero_image(org_id):
 
 @app.route('/donate')
 def donate():
-    return render_template("donate.html")
+    return render_template("donate.html", no_payment_saved=((not g.user.is_authenticated) or (g.user.stripe_id is None)))
 
 
 @app.route('/account')
@@ -157,11 +157,29 @@ def register_org_post():
 
 @app.route('/charge', methods=['POST'])
 def charge():
-    print(request)
-    print(request.form)
-    token = request.form['stripeToken']
     amount = request.form['amount']
-    charged = create_charge(amount, token)
+
+    if g.user.is_authenticated:
+        registered_user = User.query.filter(User.id == g.user.id).first()
+        stripe_id = registered_user.stripe_id
+        if stripe_id is None:
+            print "case 1"
+            token = request.form['stripeToken']
+            customer = create_user(token)
+            registered_user.set_stripe(customer)
+            #db.session.update(registered_user)
+            db.session.commit()
+        else:
+            print "case 2"
+            customer = registered_user.stripe_id
+        charged = charge_customer(customer, amount)
+    else:
+        print "case 3"
+        print(request)
+        print(request.form)
+        token = request.form['stripeToken']
+        amount = request.form['amount']
+        charged = create_charge(amount, token)
     return '<h1>'+charged.outcome.type+'</h1>'
 
 
