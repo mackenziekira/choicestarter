@@ -3,8 +3,10 @@
 
 <div id="form-page">
   <div>
-    <a href="{{ url_for('register_donor') }}"><button>Become a Donor</button></a>
-    <a href="{{ url_for('register_org') }}"><button>Register an Organization</button></a>
+    {% if not g.user.is_authenticated %}
+    <a href="{{ url_for('register_donor') }}"><button>Create an account</button></a>
+    {% endif %}
+    <a href="{{ url_for('register_org_get') }}"><button>Register an Organization</button></a>
   </div>
 </div>
 
