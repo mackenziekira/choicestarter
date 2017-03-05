@@ -5,12 +5,15 @@
 
     <form action="/charge" method="post" id="payment-form">
   <div class="form-row">
+            {% if no_payment_saved is sameas true %}
+
     <label for="card-element">
       Credit or debit card
     </label>
     <div id="card-element">
       <!-- a Stripe Element will be inserted here. -->
     </div>
+      {% endif %}
     <div>
       <label for="amount">Amount</label>
       <input type="number" id="amount">
@@ -28,6 +31,8 @@
 {% endblock %}
 
 {% block script %}
+
+{% if no_payment_saved is sameas true %}
 
 <script type="text/javascript">
 function stripeTokenHandler(token, amount) {
@@ -54,6 +59,7 @@ function stripeTokenHandler(token, amount) {
   // Create a Stripe client
 var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
+alert("block is running");
 // Create an instance of Elements
 var elements = stripe.elements();
 
@@ -92,6 +98,7 @@ card.addEventListener('change', function(event) {
   }
 });
 
+alert("important block is running");
 // Handle form submission
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
@@ -111,5 +118,31 @@ form.addEventListener('submit', function(event) {
   });
 });
 </script>
+
+{% else %}
+<script type="text/javascript">
+    var form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var amount = document.getElementById('amount').value;
+
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', 'bogus');
+        var hiddenInput2 = document.createElement('input');
+        hiddenInput2.setAttribute('type', 'hidden');
+        hiddenInput2.setAttribute('name', 'amount');
+        hiddenInput2.setAttribute('value', amount);
+
+        form.appendChild(hiddenInput);
+        form.appendChild(hiddenInput2);
+        form.submit();
+    });
+</script>
+
+{% endif %}
 
 {% endblock %}

@@ -44,6 +44,9 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
+    def set_stripe(self, stripe):
+        self.stripe_id = stripe
+
     def __repr__(self):
         return '<User %r>' % (self.username)
 
