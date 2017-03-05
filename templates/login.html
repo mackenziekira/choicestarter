@@ -3,6 +3,10 @@
 
 <div id="form-page">
 
+{% if message %}
+<h2>{{ message }}</h2>
+{% endif %}
+
   <form id="login" action="" method=post class="form-horizontal">
     <h2>Login</h2>
     <div class="control-group">
