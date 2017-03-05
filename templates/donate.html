@@ -52,8 +52,6 @@ function stripeTokenHandler(token, amount) {
 
   form.appendChild(hiddenInput);
   form.appendChild(hiddenInput2);
-  alert(amount);
-
 
   // Submit the form
   form.submit();
@@ -62,7 +60,6 @@ function stripeTokenHandler(token, amount) {
   // Create a Stripe client
 var stripe = Stripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 
-alert("block is running");
 // Create an instance of Elements
 var elements = stripe.elements();
 
@@ -101,7 +98,6 @@ card.addEventListener('change', function(event) {
   }
 });
 
-alert("important block is running");
 // Handle form submission
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
@@ -115,7 +111,6 @@ form.addEventListener('submit', function(event) {
     } else {
       // Send the token to your server
       var amount = document.getElementById('amount').value;
-      alert(amount);
       stripeTokenHandler(result.token, amount);
     }
   });
