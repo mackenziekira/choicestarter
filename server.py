@@ -20,11 +20,6 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://' \
-+ os.environ['RDS_USERNAME'] + ':' + os.environ['RDS_PASSWORD'] +'@' + os.environ['RDS_HOSTNAME'] + \
-':' + os.environ['RDS_PORT'] + '/' + os.environ['RDS_DB_NAME']
-
-
 @app.route('/')
 def index():
     """Homepage."""
@@ -196,7 +191,8 @@ if __name__ == "__main__":
     app.secret_key = SECRET_KEY
 
     app.jinja_env.auto_reload = True
-    connect_to_db(app, os.environ.get("DATABASE_URL"))
+    connect_to_db(app)
+    # os.environ.get("DATABASE_URL")
 
     # Use the DebugToolbar
     # DebugToolbarExtension(app)
