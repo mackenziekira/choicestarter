@@ -14,20 +14,19 @@
 	background-position: 50%;
 	width: 100%;
 	height: 100%;
-	padding-bottom: 39.86% /*574/1440*/
+	padding-bottom: 39.86%; /*574/1440*/
 }
 .page-landing .image-hero {
-	background: url('/static/images/choice-starter-hero.png');
+	background-image: url('/static/images/choice-starter-hero.png');
 }
 .section-hero .btn {
 	margin-top: 20px;
 	box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.2);
 }
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {*/
 	.hero-headline {
 		color: #FFF;
-		font-size: 50px;
-		margin-top: -280px;
+		margin-top: -320px;
 		margin-bottom: 200px;
 		float: none;
 		margin-left: auto;
@@ -37,6 +36,11 @@
 		margin-top: -300px;
 		padding: 10px 25px;
 		font-size: 20px;
+	}
+/*}*/
+@media (min-width: 992px) {
+	.hero-headline {
+		font-size: 50px;
 	}
 }
 .logo-graphic {
@@ -53,8 +57,8 @@
 	min-height: 500px;
 }
 .shadow-container {
-	background: #F1B23B; /*orange*/
-	border: 10px solid #fff;
+	background: #fff;
+	/*border: 10px solid #fff;*/
 	/*box-shadow: 2px 2px 5px 2px rgba(0,0,0,.2);*/
 	box-shadow: 0px 0px 10px 2px rgba(0,0,0,.2);
 	height: auto;
@@ -77,15 +81,15 @@
 	margin-top: 60px;
 }
 .container-how .shadow-container {
-	margin-top: 60px;
+	margin-top: 80px;
 	min-height: 300px;
 	overflow: hidden;
 }
 .container-who .description-about {
-	border-bottom: 10px solid #fff;
+	/*border-bottom: 10px solid #fff;*/
 }
 .container-what .description-about {
-	border-top: 10px solid #fff;
+	/*border-top: 10px solid #fff;*/
 }
 .container-how .description-about {
 	padding-top: 60px;
@@ -93,8 +97,15 @@
 .layout-half {
 	padding: 0;
 }
+.section-about .layout-half .description-about {
+	background: #fff;
+	color: #4A4A4A; /*darkgray*/
+}
+.section-about .layout-half .description-about .section-headline {
+	color: #F1B23B; /*orange*/
+}
 .layout-half:last-child {
-	border-left: 10px solid #fff;
+	/*border-left: 10px solid #fff;*/
 }
 .section-about .description-about {
 	background: #F1B23B; /*orange*/
@@ -108,15 +119,17 @@
 }
 .feature-photo-1 {
 	background-image: url('/static/images/feature-photo-1.jpg');
-	padding-bottom: 66.67%;
+	padding-bottom: 65%;
 }
 .feature-photo-2 {
 	background-image: url('/static/images/feature-photo-2.jpg');
-	padding-bottom: 100%;
+	padding-bottom: 65%;
 }
 .feature-photo-3 {
-	background-image: url('/static/images/feature-photo-3.jpg');
-	padding-bottom: 66.67%; /*1280/1920*/
+	background-image: url('/static/images/2016-access.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	min-height: 390px;
 }
 .feature-photo-4 {
 	background-image: url('/static/images/feature-photo-4.jpg');
@@ -153,10 +166,9 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.section-orgs .feature-photo-1,
-.section-orgs .feature-photo-4,
-.section-orgs .feature-photo-3 {
+.section-orgs .feature-photo-item {
 	background-size: cover;
+	background-position-x: 20%;
 	padding: 0;
 }
 .progress-bar-container {
@@ -186,10 +198,18 @@
 	width: 83%;
 }
 
+/*Section Journey
+*/
+.journey-headline {
+	color: #733773; /*purple*/
+	margin-top: 100px;
+}
+
 /*Organizations Page
 */
 .organization-name {
 	font-size: 20px;
+	font-weight: 700;
 	text-transform: uppercase;
 	position: absolute;
     top: 10px;
@@ -201,4 +221,17 @@
 }
 .page-organizations .section-headline {
 	color: #733773; /*purple*/
+}
+.page-organizations .section-about .section-headline {
+	margin-top: 50px;
+    margin-bottom: 30px;
+}
+.section-contact {
+	min-height: 100px;
+}
+.section-contact .section-headline {
+	margin-top: 80px;
+}
+.section-contact .address {
+	color: #4A4A4A; /*darkgray*/
 }

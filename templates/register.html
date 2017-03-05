@@ -2,12 +2,23 @@
 {% block content %}
 
 <div id="form-page">
-  <div>
-    {% if not g.user.is_authenticated %}
-    <a href="{{ url_for('register_donor') }}"><button>Create an account</button></a>
-    {% endif %}
-    <a href="{{ url_for('register_org_get') }}"><button>Register an Organization</button></a>
-  </div>
+  <section class="section">
+  	<div class="col-md-10 col-md-offset-1">
+	    {% if not g.user.is_authenticated %}
+  		<div class="register-donor">
+  			<h2 class="inner-section-headline">Not a member yet?</h2>
+  			<p class="light">We'd love to have you join our effort.</p>
+  			<p class="light">We will occasionally send out e-mail updates and news, but we'll try not to spam you.</p>
+	    	<a href="{{ url_for('register_donor') }}"><button class="btn">Create an account</button></a>
+	   	</div>
+	    {% endif %}
+
+	    <div class="register-org">
+	    	<h2 class="inner-section-headline">Add your organization as one of our partners.</h2>
+	    	<p class="light">Once you have an account with us, you can also register your organization to get funding and be part of our partner network.</p>
+    		<a href="{{ url_for('register_org_get') }}"><button class="btn">Register an Organization</button></a>
+    	</div>
+  </section>
 </div>
 
 {% endblock %}

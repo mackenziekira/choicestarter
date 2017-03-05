@@ -12,8 +12,29 @@ h2,
 h3 {
 	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
+.light {
+	font-weight: 300;
+}
+.bold {
+	font-weight: 700;
+}
+a {
+	color: #A7A7A7; /*darkgray*/
+}
+a:hover,
+a:focus {
+	color: #733773; /*purple*/
+	opacity: 0.9;
+	text-decoration: none;
+}
 .section-headline {
 	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.flashes {
+	list-style: none;
+	font-size: 30px;
 }
 
 /*Navbar*/
@@ -34,7 +55,6 @@ h3 {
 }
 .navbar-default .navbar-brand {
 	color: #4A4A4A; /*darkgray*/
-	font-weight: bold;
 }
 .navbar-logo {
 	float: left;
@@ -45,10 +65,15 @@ h3 {
 /*Footer*/
 footer {
 	background: #733773; /*purple*/
-	min-height: 410px;
+	min-height: 560px;
 	color: #fff;
 	margin-top: 80px;
 	padding: 40px;
+}
+@media (min-width: 992px) {
+	footer {
+		min-height: 410px;
+	}
 }
 footer .btn-footer {
     background: #c35cc3; /*lightpurple*/
@@ -75,9 +100,10 @@ footer li a:hover {
 
 /*Buttons*/
 .btn {
+	font-weight: 700;
 	text-transform: uppercase;
 	font-weight: bolder;
-	letter-spacing: 1.5px;
+	letter-spacing: 0.5px;
     background: #fff;
     color: #733773; /*purple*/
     border-radius: 0;
@@ -87,6 +113,21 @@ footer li a:hover {
 	color: #fff;
 	background: #733773; /*purple*/
 	opacity: 0.9;
+}
+.controls .btn {
+	margin-top: 10px;
+    margin-bottom: 20px;
+}
+.btn-success,
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+	border-color: #733773; /*purple*/
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+	background-color: #733773; /*purple*/
 }
 
 /*Colors*/
@@ -107,6 +148,32 @@ footer li a:hover {
 */
 
 #form-page {
+	background: #EDECEE;
 	text-align: center;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+	padding-top: 10px;
+	padding-bottom: 60px;
 }
-
+#form-page div {
+	margin-top: 20px;
+}
+#form-page .link {
+	margin: 0;
+}
+#form-page #card-element {
+	background: #fff;
+	border: 1px solid rgb(238, 238, 238);
+	max-width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 5px 5px 10px;
+}
+#form-page .register-org {
+	margin-top: 50px;
+}
+#form-page .section {
+	min-height: 400px;
+}
