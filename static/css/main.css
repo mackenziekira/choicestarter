@@ -36,6 +36,11 @@ h3 {
 	color: #4A4A4A; /*darkgray*/
 	font-weight: bold;
 }
+.navbar-logo {
+	float: left;
+	padding: 10px;
+	margin-top: -15px;
+}
 
 /*Footer*/
 footer {

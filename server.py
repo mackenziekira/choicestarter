@@ -98,7 +98,7 @@ def login_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index')) 
+    return redirect(url_for('index'))
 
 
 @app.route('/register')
@@ -133,7 +133,7 @@ def register_org_get():
     if g.user.is_authenticated:
         return render_template('register_org.html', message=None)
     else:
-        flash("Sorry, you need to login first as a user.")
+        flash("Register your organization.")
         return redirect(url_for('login_get'))
 
 

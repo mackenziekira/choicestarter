@@ -18,7 +18,7 @@ organization = Organization(
 )
 organization.address = '68 Choice Road, PO Box 541, Monticello, KY 42633'
 organization.template_featured = 1
-organization.template_hero_image = open('hero.jpg', 'rb').read()
+organization.template_hero_image = open('org-1.jpg', 'rb').read()
 db.session.add(organization)
 organization = Organization(
     'Central Region Access Coalition',
@@ -29,7 +29,7 @@ organization = Organization(
 )
 organization.address = '154 Western Ave, PO Box 67, Red Barrel, WY 78463'
 organization.template_featured = 2
-organization.template_hero_image = open('hero.jpg', 'rb').read()
+organization.template_hero_image = open('org-2.jpg', 'rb').read()
 db.session.add(organization)
 organization = Organization(
     'Far Western Abortion Access Fund',
@@ -40,7 +40,7 @@ organization = Organization(
 )
 organization.address = '98 Maple Drive, PO Box 899, Palm Break, CO 09839'
 organization.template_featured = 3
-organization.template_hero_image = open('hero.jpg', 'rb').read()
+organization.template_hero_image = open('org-3.jpg', 'rb').read()
 db.session.add(organization)
 
 db.session.commit()

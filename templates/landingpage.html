@@ -2,7 +2,7 @@
 {% block title %}Choice Starter{% endblock %}
 {% block content %}
 
-<div class="container col-xs-12">
+<div class="container page-landing col-xs-12">
 
 	<header class="section-hero">
 		<div class="image-hero"></div>
@@ -100,8 +100,8 @@
  			<h2 class="section-headline text-center">Featured Organizations</h2>
             {% for featured_organization in featured_3_organizations %}
 	 		<div class="col-xs-12 col-md-4">
-	 			<a href="{{ url_for('organization', org_id=1) }}">
-    	 			<div class="description-orgs feature-photo-item col-xs-12" style="background-image: url({{ url_for('organization_template_hero_image', org_id=featured_organization.org_id) }})"></div>
+	 			<a href="{{ url_for('organization', org_id=featured_organization.org_id) }}">
+    	 			<div class="description-orgs feature-photo-item col-xs-12" style="background-image: url('{{ url_for('organization_template_hero_image', org_id=featured_organization.org_id) }}')"></div>
 	 			</a>
 	 			<div class="progress-bar-container">
 	 				<div class="progress-bar progress-bar-1">
