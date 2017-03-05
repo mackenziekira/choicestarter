@@ -9,17 +9,39 @@ for name in ['superadmin', 'admin', 'donor', 'edit']:
     role = Role(name)
     db.session.add(role)
 
-for i in range(3):
-    organization = Organization(
-        'The Lillith Fund {}'.format(i + 1),
-        "The Lillith Fund {} helps people pay for an abortion when they can't afford it.".format(i + 1),
-        'http://lillithfund.org/',
-        'info@lillithfund.org',
-        None
-    )
-    organization.address = 'P.O. Box 759, Anytown, USA, 93856'
-    organization.template_hero_image = open('hero.jpg', 'rb').read()
-    db.session.add(organization)
+organization = Organization(
+    'South Kentucky Abortion Fund',
+    'Providing financial support for abortion access since 1994.',
+    'http://skyaa.org/',
+    'support@skyaa.org',
+    None
+)
+organization.address = '68 Choice Road, PO Box 541, Monticello, KY 42633'
+organization.template_featured = 1
+organization.template_hero_image = open('hero.jpg', 'rb').read()
+db.session.add(organization)
+organization = Organization(
+    'Central Region Access Coalition',
+    'Helping people throughout the central region access abortions.',
+    'http://crac.org/',
+    'hello@crac.org',
+    None
+)
+organization.address = '154 Western Ave, PO Box 67, Red Barrel, WY 78463'
+organization.template_featured = 2
+organization.template_hero_image = open('hero.jpg', 'rb').read()
+db.session.add(organization)
+organization = Organization(
+    'Far Western Abortion Access Fund',
+    'Ensuring abortion support for all people in the Far Western region.',
+    'http://fwaaf.org/',
+    'fwaaf@fwaaf.org',
+    None
+)
+organization.address = '98 Maple Drive, PO Box 899, Palm Break, CO 09839'
+organization.template_featured = 3
+organization.template_hero_image = open('hero.jpg', 'rb').read()
+db.session.add(organization)
 
 db.session.commit()
 

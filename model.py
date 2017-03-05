@@ -61,6 +61,7 @@ class Organization(db.Model):
     phone = db.Column(db.Text())
     address = db.Column(db.Text())
     approved = db.Column(db.Boolean, nullable=False)
+    template_featured = db.Column(db.Integer, unique=True, index=True)
     template_hero_image = db.Column(db.LargeBinary)
 
     def __init__(self, name, description, location, email, phone):
