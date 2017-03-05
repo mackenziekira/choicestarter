@@ -43,6 +43,11 @@ def account():
     return render_template("account.html")
 
 
+@app.route('/forgot_password')
+def forgot_password():
+    return render_template("forgot_password.html")
+
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -69,12 +74,12 @@ def logout():
 @app.route('/register' , methods=['GET','POST'])
 def register():
     if request.method == 'GET':
-        return render_template('register.html')
+        return render_template('register.html', message=None)
     # Post request
     existing_user = User.query.filter(User.username == request.form['username']).first()
     if existing_user:
-        message = "Sorry, that username is already taken."
-        return render_template('register.html', message=message)
+        msg = "Sorry, that username is already taken."
+        return render_template('register.html', message=msg)
     user = User(request.form['username'], request.form['password'], request.form['email'])
     db.session.add(user)
     db.session.commit()
