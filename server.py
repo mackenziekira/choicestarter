@@ -105,7 +105,7 @@ def register_donor():
     role = 'donor'
     user = User(request.form['username'], request.form['password'], request.form['email'], role)
     db.session.add(user)
-    db.session.commit()
+    db.session.flush()
     login_user(user, remember=False)
     # Add donor role
     role = 'donor'
@@ -134,7 +134,7 @@ def register_org_post():
     org = Organization(request.form['name'], request.form['description'], request.form['location'],
         request.form['email'], request.form['phone'])
     db.session.add(org)
-    db.session.commit()
+    db.session.flush()
     # Add org-admin user-role
     role = 'admin'
     userrole = UserRole(org.org_id, g.user.id, role)
