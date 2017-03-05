@@ -22,8 +22,8 @@ def index():
     # If logged in
     # find all roles
     # pass all roles and data to landing page
-
-    return render_template("landingpage.html")
+    featured_3_organizations = Organization.query.filter(Organization.template_featured <= 3)
+    return render_template("landingpage.html", featured_3_organizations=featured_3_organizations)
 
 
 @app.route('/about')

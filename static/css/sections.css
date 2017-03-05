@@ -90,7 +90,7 @@
 }
 .feature-photo-1 {
 	background-image: url(/static/images/feature-photo-1.jpg);
-	padding-bottom: 66.67%; /*1280/1920*/
+	padding-bottom: 66.67%;
 }
 .feature-photo-2 {
 	background-image: url(/static/images/feature-photo-2.jpg);
@@ -103,6 +103,9 @@
 .feature-photo-4 {
 	background-image: url(/static/images/feature-photo-4.jpg);
 	padding-bottom: 66.67%; /*1280/1920*/
+}
+.feature-photo-item {
+	padding-bottom: 66.67%;
 }
 
 /*Section orgs*/

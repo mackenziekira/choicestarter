@@ -57,6 +57,7 @@
 			 		<div class="layout-half col-xs-12 col-md-6">
 			 			<div class="feature-photo feature-photo-2"></div>
 			 		</div>
+                </div>
 	 		</div>
 	 	</div>
  	</section>
@@ -96,8 +97,9 @@
  	<section class="section section-orgs text-center">
  		<div class="col-md-10 col-md-offset-1">
  			<h2 class="section-headline text-center">Featured Organizations</h2>
+            {% for featured_organization in featured_3_organizations %}
 	 		<div class="col-xs-12 col-md-4">
-	 			<div class="description-orgs feature-photo-1 col-xs-12">
+	 			<div class="description-orgs feature-photo-item col-xs-12" style="background-image: url({{ url_for('organization_template_hero_image', org_id=featured_organization.org_id) }})">
 	 				<!-- <h2 class="section-headline text-center">who we are</h2>
 	 				<p class="text-center">Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition.</p> -->
 	 			</div>
@@ -106,35 +108,10 @@
 	 					<p>$300 to go</p>
 	 				</div>
 	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=1) }}">The Lillith Fund</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
+	 			<h4><a href="{{ url_for('organization', org_id=featured_organization.org_id) }}">{{ featured_organization.name }}</a></h4>
+	 			<p>{{ featured_organization.description }}</p>
 	 		</div>
-	 		<div class="col-xs-12 col-md-4">
-	 			<div class="description-orgs feature-photo-4 col-xs-12">
-	 				<!-- <h2 class="section-headline text-center">what we do</h2>
-	 				<p class="text-center">Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition.</p> -->
-	 			</div>
-	 			<div class="progress-bar-container">
-	 				<div class="progress-bar progress-bar-2">
-	 					<p>$600 to go</p>
-	 				</div>
-	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=2) }}">Fund #2</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-	 		</div>
-	 		<div class="col-xs-12 col-md-4">
-	 			<div class="description-orgs feature-photo-3 col-xs-12">
-	 				<!-- <h2 class="section-headline text-center">how we help</h2>
-	 				<p class="text-center">Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition.</p> -->
-	 			</div>
-	 			<div class="progress-bar-container">
-	 				<div class="progress-bar progress-bar-3">
-	 					<p>$120 to go</p>
-	 				</div>
-	 			</div>
-	 			<h4><a href="{{ url_for('organization', org_id=3) }}">Fund #3</a></h4>
-	 			<p>Combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.</p>
-	 		</div>
+            {% endfor %}
 	 	</div>
  	</section>
 
