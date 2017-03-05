@@ -2,15 +2,41 @@
 * Shared CSS throughout the site
 */
 * {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 h1,
 h2,
 h3 {
-	font-family: 'Playfair Display', serif;
+	font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
+
+/*Navbar*/
 .navbar-default {
 	background: beige;
 	border: none;
-	/*background: url(/static/images/choice-starter-logo.png);*/
 }
+
+/*Buttons*/
+.btn {
+	text-transform: uppercase;
+	font-weight: bolder;
+	letter-spacing: 1.5px;
+    background: purple;
+    color: #fff;
+    border-radius: 0;
+    box-shadow: 0px 0px 4px 2px rgba(255,255,255,0.2);
+}
+.btn:hover {
+	color: #fff;
+	background: purple;
+	opacity: 0.9;
+}
+
+/*Colors*/
+/*
+#733773
+*/
+#form-page {
+	text-align: center;
+}
+

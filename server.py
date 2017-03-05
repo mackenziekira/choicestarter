@@ -1,8 +1,9 @@
 from jinja2 import StrictUndefined
-from flask import Flask, jsonify, render_template, redirect, request, flash, session, g
+from flask import Flask, jsonify, render_template, redirect, request, flash, session, g, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
-from model import db, connect_to_db
+# from model import db, connect_to_db
+from model import *
 import os
 
 app = Flask(__name__)
@@ -43,6 +44,11 @@ def account():
     return render_template("account.html")
 
 
+@app.route('/forgot_password')
+def forgot_password():
+    return render_template("forgot_password.html")
+
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
@@ -69,13 +75,14 @@ def logout():
 @app.route('/register' , methods=['GET','POST'])
 def register():
     if request.method == 'GET':
-        return render_template('register.html')
+        return render_template('register.html', message=None)
     # Post request
     existing_user = User.query.filter(User.username == request.form['username']).first()
     if existing_user:
-        message = "Sorry, that username is already taken."
-        return render_template('register.html', message=message)
-    user = User(request.form['username'], request.form['password'], request.form['email'])
+        msg = "Sorry, that username is already taken."
+        return render_template('register.html', message=msg)
+    role = 'donor'
+    user = User(request.form['username'], request.form['password'], request.form['email'], role)
     db.session.add(user)
     db.session.commit()
     login_user(user, remember=False)
