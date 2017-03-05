@@ -63,10 +63,12 @@ class Organization(db.Model):
     phone = db.Column(db.Text())
     approved = db.Column(db.Boolean)
 
-    def __init__(self, name, description, location):
+    def __init__(self, name, description, location, email, phone):
         self.name = name
         self.description = description
         self.location = location
+        self.email = email
+        self.phone = phone
         self.approved = False
 
     def __repr__(self):

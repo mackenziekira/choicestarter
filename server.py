@@ -122,8 +122,10 @@ def register_org_post():
         msg = "Sorry, that organization name is already taken."
         return render_template('register_org.html', message=msg)
     # Create organization
-    org = Organization(request.form['name'], request.form['description'], request.form['location'])
+    org = Organization(request.form['name'], request.form['description'], request.form['location'],
+        request.form['email'], request.form['phone'])
     db.session.add(org)
+    db.session.commit()
     # Add org-admin user-role
     role = 'admin'
     userrole = UserRole(org.org_id, g.user.id, role)
