@@ -7,8 +7,6 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-  <link rel="stylesheet" type="text/css" href="/static/css/sections.css">
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 <!--   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
 </head>
 
@@ -24,8 +22,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <img src="/static/images/choice-starter-logo.png" height="50" />
-        <a class="navbar-brand" href="{{ url_for('index') }}">choiceStarter</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Choice Starter</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,6 +33,7 @@
           <li><a href="{{ url_for('about') }}">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+        {% if g.user.is_authenticated %}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">USERNAME<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -43,13 +41,17 @@
               <li><a href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
           </li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a></li>
+          <li><a href="{{ url_for('register') }}">Regiser</a></li>
+        {% endif %}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
   <!-- Flash messages -->
-
+  
   {% with messages = get_flashed_messages() %}
   {% if messages %}
   <div>

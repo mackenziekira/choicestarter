@@ -1,4 +1,4 @@
-"""Models and database functions for Poetry project"""
+"""Models and database functions for Choice Starter project"""
 
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
