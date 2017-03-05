@@ -11,8 +11,8 @@ for name in ['superadmin', 'admin', 'donor', 'edit']:
 
 for i in range(3):
     organization = Organization(
-        'The Lillith Fund {}'.format(i),
-        "The Lillith Fund {} helps people pay for an abortion when they can't afford it.".format(i),
+        'The Lillith Fund {}'.format(i + 1),
+        "The Lillith Fund {} helps people pay for an abortion when they can't afford it.".format(i + 1),
         'http://lillithfund.org/',
         'info@lillithfund.org',
         None
