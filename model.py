@@ -18,15 +18,13 @@ class User(db.Model):
     password = db.Column('password' , db.Text())
     email = db.Column('email', db.Text())
     registered_on = db.Column('registered_on', db.DateTime)
-    role = db.Column('role' , db.Text())
     stripe_id = db.Column('stripe_id', db.Text(), index=True)
 
-    def __init__(self, username, password, email, role):
+    def __init__(self, username, password, email):
         self.username = username
         self.set_password(password)
         self.email = email
         self.registered_on = datetime.utcnow()
-        self.role = role
 
     def set_password(self , password):
         self.password = generate_password_hash(password)
